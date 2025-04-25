@@ -1,0 +1,25 @@
+const { sumar } = require("../index")
+
+const mockSumar = jest.fn(sumar)
+
+describe("La funcion sumar",() =>{
+
+    it("Debe retornar null si es ejecutada con algun valor no numerico como argumento",()=>{
+        expect(mockSumar(1,true)).toBe(null)
+        expect(mockSumar(false,10)).toBe(null)
+        expect(mockSumar("roberto","ricardo")).toBe(null)
+    });
+
+    it("Debe retornar correctamente el resulatado de la suma",()=>{
+        expect(mockSumar(1,1)).toBe(2)
+        expect(mockSumar(0,0)).toBe(0)
+        expect(mockSumar(14,20)).toBe(34)
+        expect(mockSumar(22,89)).toBe(111)
+        console.log(mockSumar.mock)
+    })
+    
+
+    it("Debe haber sumado bien los argumentos 14 y 20",() => {
+        expect(mockSumar).toHaveBeenCalledWith(14,20)
+    })
+});
